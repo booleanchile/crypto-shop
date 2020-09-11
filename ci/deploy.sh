@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# The following line is needed by the CircleCI Local Build Tool (due to Docker interactivity)
+exec < /dev/tty
+
 build_and_push_docker_image() {
     echo "======================================================================================================="
     echo "          Authentication in Docker Heroku Registry for Deploy                                          "
