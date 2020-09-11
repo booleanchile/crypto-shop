@@ -20,5 +20,5 @@ workflows:
     jobs:
       - unit-test
       - staging-deploy:
-        requires:
-          - unit-test
+          requires:
+            - unit-test
