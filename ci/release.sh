@@ -1,6 +1,4 @@
 #!/usr/bin/env sh
-set -e
-set -o pipefail
 
 imageId=$(docker inspect registry.heroku.com/$HEROKU_APP_NAME/web:latest --format={{.Id}})
 payload='{"updates":[{"type":"web","docker_image":"'"$imageId"'"}]}'
