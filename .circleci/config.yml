@@ -7,8 +7,18 @@ jobs:
       - checkout
       - run: npm ci
       - run: npm test
+  staging-deploy:
+    machine: true
+    steps:
+      - checkout
+      - run: /bin/sh ci/deploy
+      - run: /bin/sh ci/release
+
 workflows:
   version: 2
   crypto-shop-pipeline:
     jobs:
       - unit-test
+      - staging-deploy:
+        requires:
+          - unit-test
