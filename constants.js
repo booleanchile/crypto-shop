@@ -5,8 +5,12 @@ export const images = [
   'photo-1553503359-d4ff2537a6ea',
   'photo-1585211751845-37663b4ab614',
   'photo-1496467115032-c504ef76521b',
-]
+];
+
+const BASE_URL = process.env.NODE_ENV === 'production'
+  ? 'https://dreampay-guuz2y3uia-uc.a.run.app'
+  : 'https://localhost:7443';
 
 export const endpoints = {
-  product: '/api/v1/products/list' 
+  product: `${BASE_URL}/api/v1/products/list`
 };

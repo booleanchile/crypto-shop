@@ -1,8 +1,9 @@
-import * as React from 'react'
+import React, { useEffect } from 'react';
 import Link from 'next/link'
-
 import { motion } from 'framer-motion'
+
 import { images } from '../constants'
+import { getProducts } from '../services/products'
 
 const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }
 
@@ -61,41 +62,51 @@ const Thumbnail = ({ id, i }) => (
   </>
 )
 
-const Gallery = () => (
-  <>
-    <div className="gallery">
-      <motion.div
-        className="thumbnails"
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        variants={{ exit: { transition: { staggerChildren: 0.1 } } }}
-      >
-        {images.map((id, i) => (
-          <Thumbnail key={id} id={id} i={i} />
-        ))}
-      </motion.div>
-    </div>
-    <style>
-      {`
-        
-        .gallery {
-            padding: 40px;
-            margin: 0 auto;
-            width: 100%;
-            max-width: 1200px;
-            position: relative;
-        }
+function Gallery() {
 
-        .thumbnails {
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-        `}
-    </style>
-  </>
-)
+  useEffect(() => {
+    getProducts()
+      .then((results) => {
+        console.log('PRODUCTS', results);
+      }); 
+  }, [])
+
+  return (
+    <>
+      <div className="gallery">
+        <motion.div
+          className="thumbnails"
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          variants={{ exit: { transition: { staggerChildren: 0.1 } } }}
+        >
+          {images.map((id, i) => (
+            <Thumbnail key={id} id={id} i={i} />
+          ))}
+        </motion.div>
+      </div>
+      <style>
+        {`
+          
+          .gallery {
+              padding: 40px;
+              margin: 0 auto;
+              width: 100%;
+              max-width: 1200px;
+              position: relative;
+          }
+
+          .thumbnails {
+              display: flex;
+              flex-wrap: wrap;
+              flex-direction: row;
+              justify-content: space-between;
+          }
+          `}
+      </style>
+    </>
+  );
+}
 
 export default Gallery
