@@ -11,8 +11,8 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: /bin/sh ci/deploy
-      - run: /bin/sh ci/release
+      - run: ci/deploy.sh
+      - run: ci/release.sh
 
 workflows:
   version: 2
