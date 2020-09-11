@@ -16,4 +16,7 @@ build_and_push_docker_image() {
     docker push registry.heroku.com/$HEROKU_APP_NAME/web:latest
 }
 
+#debug de la estructura de directorios
+ls -lha && ls -lha out
+
 build_and_push_docker_image

@@ -6,7 +6,8 @@
     "test": "jest",
     "build": "next build",
     "start": "next start",
-    "stubs": "stubby -d stubby.config.json -w"
+    "stubs": "stubby -d stubby.config.json -w",
+    "export": "next export"
   },
   "dependencies": {
     "axios": "^0.20.0",

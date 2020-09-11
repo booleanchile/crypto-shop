@@ -1,19 +1,9 @@
-# base image
-FROM node:alpine
+FROM node:12-alpine
 
-# create & set working directory
-RUN mkdir -p /usr/src
-WORKDIR /usr/src
+RUN npm i -g http-server
+RUN mkdir website
 
-# copy source files
-COPY . /usr/src
-
-# install dependencies
-RUN npm install
-
-# start app
-RUN npm run build
+COPY out /website
 
 EXPOSE 80
-
-CMD ["npm", "run", "start", "--", "-p 80"]
+CMD [ "http-server", "./website", "--gzip", "--utc" ]

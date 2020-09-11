@@ -1,5 +1,17 @@
 version: 2.1
 jobs:
+  build:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run export
+      - save_cache:
+        name: Save dist folder
+        paths:
+          - out
+        key: build-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
   unit-test:
     docker:
       - image: circleci/node:12
@@ -11,6 +23,8 @@ jobs:
     machine: true
     steps:
       - checkout
+      - restore_cache:
+        key: build-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
       - run: ./ci/deploy
       - run: ./ci/release
 
