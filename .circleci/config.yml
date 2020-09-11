@@ -34,7 +34,7 @@ workflows:
       - build
       - unit-test:
           requires:
-            - unit-test
+            - build
       - staging-deploy:
           requires:
             - unit-test
