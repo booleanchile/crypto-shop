@@ -26,8 +26,9 @@ const backVariants = {
 const SingleImage = ({ index }) => (
   <>
     <motion.div className="single" initial="exit" animate="enter" exit="exit">
+      {/* variants={imageVariants} */}
       <motion.img
-        variants={imageVariants}
+        layoutId={`thumbnail-${index}`}
         src={`https://images.unsplash.com/${images[index]}?auto=format&fit=crop&w=1500`}
         alt="The Barbican"
       />

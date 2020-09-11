@@ -1,4 +1,5 @@
-import { AnimatePresence } from 'framer-motion'
+import React from 'react';
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import { useRouter } from 'next/router'
 
 function handleExitComplete() {
@@ -10,10 +11,13 @@ function handleExitComplete() {
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
   return (
-    <>
-      <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
-        <Component {...pageProps} key={router.route} />
-      </AnimatePresence>
+    <React.Fragment>
+      <AnimateSharedLayout type="crossfade">
+        <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
+          <Component {...pageProps} key={router.route} />
+        </AnimatePresence>
+      </AnimateSharedLayout>
+
       <style>
         {`
         body {
@@ -30,7 +34,7 @@ function MyApp({ Component, pageProps }) {
         }
       `}
       </style>
-    </>
+    </React.Fragment>
   )
 }
 

@@ -6,3 +6,7 @@ export const images = [
   'photo-1585211751845-37663b4ab614',
   'photo-1496467115032-c504ef76521b',
 ]
+
+export const endpoints = {
+  product: '/api/v1/products/list' 
+};

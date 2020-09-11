@@ -3,14 +3,22 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
+    "test": "jest",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "stubs": "stubby -d stubby.config.json -w"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "framer-motion": "latest",
     "next": "latest",
     "react": "16.11.0",
     "react-dom": "16.11.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/preset-env": "^7.11.5",
+    "jest": "^26.4.2",
+    "stubby": "^5.0.0"
+  }
 }

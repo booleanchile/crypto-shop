@@ -26,22 +26,16 @@ const imageVariants = {
 
 const Thumbnail = ({ id, i }) => (
   <>
-    <motion.div className="thumbnail" variants={thumbnailVariants}>
-      <motion.div
-        className="frame"
-        whileHover="hover"
-        variants={frameVariants}
-        transition={transition}
-      >
-        <Link href="/image/[index]" as={`/image/${i}`} scroll={false}>
-          <motion.img
-            src={`https://images.unsplash.com/${id}?auto=format&fit=crop&w=1500`}
-            alt="The Barbican"
-            variants={imageVariants}
-            transition={transition}
-          />
-        </Link>
-      </motion.div>
+    {/* variants={thumbnailVariants} */}
+    <motion.div className="thumbnail" layoutId={`thumbnail-${i}`}>
+      <Link href="/image/[index]" as={`/image/${i}`} scroll={false}>
+        <motion.img
+          src={`https://images.unsplash.com/${id}?auto=format&fit=crop&w=1500`}
+          alt="The Barbican"
+          variants={imageVariants}
+          transition={transition}
+        />
+      </Link>
     </motion.div>
     <style>
       {`
@@ -69,7 +63,6 @@ const Thumbnail = ({ id, i }) => (
 
 const Gallery = () => (
   <>
-    <h1>Motion</h1>
     <div className="gallery">
       <motion.div
         className="thumbnails"
@@ -85,18 +78,7 @@ const Gallery = () => (
     </div>
     <style>
       {`
-        h1 {
-            font-size: 100px;
-            text-align: center;
-            position: fixed;
-            bottom: -100px;
-            z-index: 1;
-            color: #f9fbf8;
-            left: 50%;
-            transform: translateX(-50%);
-            pointer-events: none;
-        }
-
+        
         .gallery {
             padding: 40px;
             margin: 0 auto;
@@ -111,33 +93,6 @@ const Gallery = () => (
             flex-direction: row;
             justify-content: space-between;
         }
-
-         @media screen and (min-width: 600px) {
-           h1 {
-             font-size: 140px;
-             bottom: -130px;
-           }
-         }
-
-         @media screen and (min-width: 800px) {
-           h1 {
-             font-size: 180px;
-             bottom: -170px;
-           }
-         }
-
-         @media screen and (min-width: 1000px) {
-           h1 {
-             font-size: 220px;
-             bottom: -200px;
-           }
-         }
-         @media screen and (min-width: 1200px) {
-           h1 {
-             font-size: 280px;
-             bottom: -260px;
-           }
-         }
         `}
     </style>
   </>
