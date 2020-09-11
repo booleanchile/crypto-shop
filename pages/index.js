@@ -10,9 +10,6 @@ const Index = () => {
       <main>
         <section>
           <Gallery />
-
-          <SingleImage></SingleImage>
-
         </section>
       </main>
     </>
