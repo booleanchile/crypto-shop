@@ -1,6 +1,7 @@
 import Gallery from '../components/Gallery'
+import { getProducts } from '../services/products'
 
-const Index = () => {
+const Index = ({products}) => {
 
   return (
     <>
@@ -9,11 +10,16 @@ const Index = () => {
       </header>
       <main>
         <section>
-          <Gallery />
+          <Gallery products={products}/>
         </section>
       </main>
     </>
   );
 };
+
+Index.getInitialProps = async (ctx) => {
+  const products = await getProducts()
+  return { products }
+}
 
 export default Index

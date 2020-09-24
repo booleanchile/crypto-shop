@@ -1,25 +1,26 @@
 import * as React from 'react'
 import SingleImage from '../../components/SingleImage'
-import { images } from '../../constants'
-const Page = ({ index }) => {
+import { getProducts } from '../../services/products'
+const Page = ({index}) => {
   return <SingleImage index={index} />
 }
 
 export async function getStaticProps({ params }) {
-  const number = Number.parseInt(params.index, 10)
+  const { index } = params
   return {
     props: {
-      index: number,
+      index
     },
   }
 }
 
 export async function getStaticPaths() {
+  const products = await getProducts()
   return {
-    paths: images.map((_id, index) => {
+    paths: products.map((product) => {
       return {
         params: {
-          index: `${index}`,
+          index: `${product._id}`,
         },
       }
     }),

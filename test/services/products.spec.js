@@ -19,7 +19,7 @@ describe('Product Service', () => {
     getProducts()
       .then((productList) => {
         expect(get).toHaveBeenCalledWith(endpoints.product);
-        expect(productList).toEqual(response.data);
+        expect(productList).toEqual(response.data.product);
         done();
       });
   });

@@ -9,7 +9,7 @@ export const images = [
 
 const BASE_URL = process.env.NODE_ENV === 'production'
   ? 'https://dreampay-guuz2y3uia-uc.a.run.app'
-  : 'https://localhost:7443';
+  : 'http://localhost:8882';
 
 export const endpoints = {
   product: `${BASE_URL}/api/v1/products/list`

@@ -29,7 +29,7 @@ const SingleImage = ({ index }) => (
       {/* variants={imageVariants} */}
       <motion.img
         layoutId={`thumbnail-${index}`}
-        src={`https://images.unsplash.com/${images[index]}?auto=format&fit=crop&w=1500`}
+        src={`https://picsum.photos/seed/picsum/500/500`}
         alt="The Barbican"
       />
       <motion.div className="back" variants={backVariants}>

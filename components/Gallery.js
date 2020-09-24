@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 import { images } from '../constants'
-import { getProducts } from '../services/products'
 
 const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }
 
@@ -25,13 +24,13 @@ const imageVariants = {
   hover: { scale: 1.1 },
 }
 
-const Thumbnail = ({ id, i }) => (
+const Thumbnail = ({ id }) => (
   <>
     {/* variants={thumbnailVariants} */}
-    <motion.div className="thumbnail" layoutId={`thumbnail-${i}`}>
-      <Link href="/image/[index]" as={`/image/${i}`} scroll={false}>
+    <motion.div className="thumbnail" layoutId={`thumbnail-${id}`}>
+      <Link href="/product/[index]" as={`/product/${id}`} scroll={false}>
         <motion.img
-          src={`https://images.unsplash.com/${id}?auto=format&fit=crop&w=1500`}
+          src={`https://picsum.photos/seed/picsum/500/500`}
           alt="The Barbican"
           variants={imageVariants}
           transition={transition}
@@ -62,14 +61,7 @@ const Thumbnail = ({ id, i }) => (
   </>
 )
 
-function Gallery() {
-
-  useEffect(() => {
-    getProducts()
-      .then((results) => {
-        console.log('PRODUCTS', results);
-      }); 
-  }, [])
+function Gallery({products}) {
 
   return (
     <>
@@ -81,8 +73,8 @@ function Gallery() {
           exit="exit"
           variants={{ exit: { transition: { staggerChildren: 0.1 } } }}
         >
-          {images.map((id, i) => (
-            <Thumbnail key={id} id={id} i={i} />
+          {products.map((product) => (
+            <Thumbnail key={product._id} id={product._id} />
           ))}
         </motion.div>
       </div>
