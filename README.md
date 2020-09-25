@@ -10,6 +10,9 @@ Objetivos:
 - Generar comunidad para continuar aportando y manteniendo este repositorio en el tiempo generando un canal para que más personas se integren a aportar y aprender a través de este repositorio enseñando y guíando a todos los entusiastas a aportar
 
 
+#### STAGING
+   https://crypto-shop-staging.herokuapp.com/
+
 Cronograma Capítulo 1:
 
 - Conversación (10 minutos)
@@ -44,13 +47,8 @@ Cronograma Capítulo 1:
   - que es framer motion
   - sharedLayout
   - animaciones en bloques de descripción
-  - Mejora de los stubs y como "exigirle" al backend (o BFF)
+  - Mejora de los stubs y como "exigirle" al backend (o modelar BFF)
   - Commit pase a NICO
-
-- Redux (5 minutos)
-  - ¿para que?
-  - implementación
-  - Commit pase a GONZALO
 
 - Integración Continua (Gonzalo 10 minutos)
   - Archivo de manifiesto y conexión con github (Build, Test, Staging, Deploy)
